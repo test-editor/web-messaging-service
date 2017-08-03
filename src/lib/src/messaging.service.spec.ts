@@ -2,8 +2,6 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { MessagingService } from './messaging.service';
 
-type MessageCallback = (payload: any) => void;
-
 describe('MessagingService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
