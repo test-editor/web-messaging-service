@@ -1,6 +1,6 @@
 {
   "name": "@testeditor/messaging-service",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Angular service for component communication.",
   "main": "./bundles/messaging-service.umd.js",
   "module": "./messaging-service.es5.js",
