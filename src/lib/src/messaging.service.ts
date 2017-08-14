@@ -4,10 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/filter'
 import 'rxjs/add/operator/map'
 
-interface Message {
-  type: string;
-  payload: any;
-}
+import { Message } from './message';
 
 @Injectable()
 export class MessagingService {
@@ -23,6 +20,10 @@ export class MessagingService {
       .filter(m => m.type === type)
       .map(m => m.payload)
       .subscribe(callback);
+  }
+
+  public subscribeAll(callback: (message: Message) => void): Subscription {
+    return this.handler.subscribe(callback);
   }
 
 }
