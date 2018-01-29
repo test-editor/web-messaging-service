@@ -10,29 +10,35 @@ const ngc = require('@angular/compiler-cli/src/main').main;
 
 const srcDir = path.join(__dirname, 'src/');
 const distDir = path.join(__dirname, 'dist/');
-const aotDir = path.join(__dirname, 'aot/');
+const aotDir = path.join(__dirname, 'out-tsc/');
 const rollupConfig = {
-  entry: `${srcDir}/main-aot.js`,
-  sourceMap: false,
-  format: 'iife',
-  onwarn: function (warning) {
-    // Skip certain warnings
-    if (warning.code === 'THIS_IS_UNDEFINED') { return; }
-    // console.warn everything else
-    console.warn(warning.message);
+  inputConfig : {
+    input: `${aotDir}src/main-aot.js`,
+    onwarn: function (warning) {
+      // Skip certain warnings
+      if (warning.code === 'THIS_IS_UNDEFINED') { return; }
+      // console.warn everything else
+      console.warn(warning.message);
+    },
+    plugins: [
+      nodeResolve({ jsnext: true, module: true }),
+      commonjs({
+        include: ['node_modules/rxjs/**']
+      }),
+      uglify()
+    ]
   },
-  plugins: [
-    nodeResolve({ jsnext: true, module: true }),
-    commonjs({
-      include: ['node_modules/rxjs/**']
-    }),
-    uglify()
-  ]
+  outputConfig : {
+    sourcemap: false,
+    format: 'iife'
+  }
 };
 
 return Promise.resolve()
   // Compile using ngc.
-  .then(() => ngc({ project: `./tsconfig.aot.json` }))
+  .then(() => { ngc(['-p', `./tsconfig.aot.json`], error => {
+    throw new Error('ngc comilation failed: ' + error);
+  }); })
   // Create dist dir.
   .then(() => _recursiveMkDir(distDir))
   // Copy files.
@@ -50,11 +56,10 @@ return Promise.resolve()
     return Promise.all(assets.map(asset => _relativeCopy(asset, srcDir, distDir)));
   })
   // Bundle app.
-  .then(() => rollup.rollup(rollupConfig))
+  .then(() => rollup.rollup(rollupConfig.inputConfig))
   // Concatenate app and scripts.
-  .then(bundle => {
-    const appBundle = bundle.generate(rollupConfig);
-
+  .then(bundle => bundle.generate(rollupConfig.outputConfig))
+  .then(appBundle => {
     const scripts = [
       'node_modules/core-js/client/shim.min.js',
       'node_modules/zone.js/dist/zone.min.js'

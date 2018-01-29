@@ -15,8 +15,7 @@ describe('Messaging Service E2E Tests', function () {
     let messageDiv = $('#theServiceDiv');
 
     // then
-    expect(messageDiv.getText()).toEqual('Messaging service is set !');
-  });
+    messageDiv.getText().then((msg) => { expect(msg).toEqual('Messaging service is set !'); });
 
   it('sent message should be displayed', () => {
     // given
@@ -30,7 +29,8 @@ describe('Messaging Service E2E Tests', function () {
     button.click();
 
     // then
-    expect(messageDiv.getText()).toEqual(`Last message was: ${message}`);
+    messageDiv.getText().then((msg)=>  {expect(msg).toEqual(`Last message was: ${message}`)});
   });
 
+  });
 });
