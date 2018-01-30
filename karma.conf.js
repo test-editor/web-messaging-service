@@ -23,7 +23,11 @@ module.exports = function (config) {
       // chrome setup for travis CI using chromium
       Chrome_travis_ci: {
         base: 'Chrome',
-        flags: ['--headless']
+        flags: [
+          '--no-sandbox',
+          '--disable-gpu',
+          '--window-size=1440,900'
+        ]
       },
       Firefox_travis_ci: {
         base: 'Firefox'
@@ -87,7 +91,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Firefox_travis_ci'],
+    browsers: ['Chrome_travis_ci'],
     singleRun: false
   })
 }
