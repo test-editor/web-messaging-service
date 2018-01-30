@@ -1,6 +1,7 @@
 dist: trusty
 sudo: false
 addons:
+  firefox: "latest"
   apt:
     packages:
       - google-chrome-stable
