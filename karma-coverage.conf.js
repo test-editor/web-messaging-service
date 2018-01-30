@@ -15,7 +15,7 @@ module.exports = function (config) {
     preprocessors: {
       './src/lib/**/!(*spec).js': 'coverage'
     },
-    reporters: ['progress', 'kjhtml', 'coverage', 'remap-coverage'],
+    reporters: ['progress', 'kjhtml', 'coverage'],
 
     coverageReporter: {
       type: 'in-memory'
