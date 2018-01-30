@@ -5,7 +5,8 @@
   "server": {
     "baseDir": "src",
     "routes": {
-      "/node_modules": "node_modules"
+      "/node_modules": "node_modules",
+      "/node_modules/@testeditor/messaging-service/bundles": "node_modules/@testeditor/bundles"
     },
     "middleware": {
       "0": null
