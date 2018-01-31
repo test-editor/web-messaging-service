@@ -6,6 +6,8 @@ addons:
   apt:
     packages:
       - xvfb
+      - libexif-dev
+      - udev
 language: node_js
 node_js:
   - "9"
@@ -28,8 +30,6 @@ install:
 script:
   - npm run lint
   - npm run test:once
-  # disabled because of current issue of chromedriver 2.35 with chrome stable (63.0...) resulting in crahsing chromedriver
-  #
   - npm run integration
   - npm run coverage
 
