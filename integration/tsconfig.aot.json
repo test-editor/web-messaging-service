@@ -4,21 +4,20 @@
     "module": "es2015",
     "moduleResolution": "node",
     "sourceMap": true,
+    "mapRoot" : "",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": [
       "es2015",
       "dom"
     ],
+    "outDir": "./out-tsc",
     "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": true
+    "suppressImplicitAnyIndexErrors": true,
+    "rootDir" : "."
   },
   "files": [
     "src/app/app.module.ts",
     "src/main-aot.ts"
-  ],
-  "angularCompilerOptions": {
-    "genDir": "out-tsc",
-    "skipMetadataEmit": true
-  }
+  ]
 }

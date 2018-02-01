@@ -8,6 +8,7 @@ module.exports = function (config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
+      require('karma-firefox-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
       require('karma-remap-coverage')
@@ -15,7 +16,7 @@ module.exports = function (config) {
     preprocessors: {
       './src/lib/**/!(*spec).js': 'coverage'
     },
-    reporters: ['progress', 'kjhtml', 'coverage', 'remap-coverage'],
+    reporters: ['progress', 'kjhtml', 'coverage'],
 
     coverageReporter: {
       type: 'in-memory'

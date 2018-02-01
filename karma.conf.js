@@ -9,6 +9,7 @@ module.exports = function (config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
+      require('karma-firefox-launcher'),
       require('karma-jasmine-html-reporter')
     ],
 
@@ -22,7 +23,14 @@ module.exports = function (config) {
       // chrome setup for travis CI using chromium
       Chrome_travis_ci: {
         base: 'Chrome',
-        flags: ['--no-sandbox']
+        flags: [
+          '--no-sandbox',
+          '--disable-gpu',
+          '--window-size=1440,900'
+        ]
+      },
+      Firefox_travis_ci: {
+        base: 'Firefox'
       }
     },
 
@@ -83,7 +91,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['Chrome_travis_ci'],
     singleRun: false
   })
 }

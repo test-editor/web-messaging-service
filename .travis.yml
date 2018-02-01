@@ -1,20 +1,30 @@
 dist: trusty
 sudo: false
+addons:
+  firefox: "58.0.1"
+  chrome: stable
+  apt:
+    packages:
+      - xvfb
+      - libexif-dev
+      - udev
 language: node_js
 node_js:
-  - "6"
+  - "9"
 os:
   - linux
 cache: yarn
 before_install:
   # Use a virtual display.
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
+  - "export DISPLAY=:99.0"
+  - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1920x1080x16"
   # Install latest chrome.
-  - export CHROME_BIN=chromium-browser
+  - export CHROME_BIN=google-chrome-stable
   # Use newer Yarn version
-  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 0.27.5
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.3.2
   - export PATH="$HOME/.yarn/bin:$PATH"
+  - google-chrome-stable --version
+  - which google-chrome-stable
 install:
   - yarn install
 script:
@@ -22,7 +32,7 @@ script:
   - npm run test:once
   - npm run integration
   - npm run coverage
-  
+
 # deployment
 after_success:
   - cd dist/
