@@ -45,4 +45,4 @@ deploy:
   on:
     tags: true
     repo: test-editor/web-messaging-service
-    node: "6"
+    node: "9"
