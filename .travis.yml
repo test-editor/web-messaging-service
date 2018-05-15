@@ -43,6 +43,7 @@ deploy:
   api_key:
     secure: zdPjFElIsbKYXJ0AZ9tO5pdiCPZFE4Olvj/CMGeQR7TJ4rpiMOLotkaQWoMYHr7j1QFdJ7ox7WLyxSPY5lOUAQ2QuhMRq20SZ4xkWd0FYg45jaPfSd9jcLFUyKwL52ZiThalNR/9T8+8BMerq1+NS/SMkseLrleUBxutWTIPY/xLvxOdxIsBIUn2dKoxRPiZP0ESKBLZyzSQZZbZnAkmcxPPWW9TDp14UYcOP0w5QILExdd1Ryg2c8AjjtU7NWr0HWc/XIxBMxjD1uLpjTLGfCB7e/4s3pLbsS7o2YrpYFmzz1v75uqCzmtSRAwMhTIrbPLL4pdLCQKuXtx1FUf/JqsqEbY079zKliHPNYxeD6cu7xHzHfnWBZvIIjA3OrxLL+t5lEdzuAcu4Qf4Re8yI7zkMl/fNcYPQN2hIh/v5uMk/weMzPTz3gawenhamGYdPk/hPeIhrvcLDWdr+PL77EaTFFa6gJreAfVZq+vEhoGTWoaVjGNA4+szh3btiRaAoY7gIlhzTm0VAdKo8ZXIAgErCS3nQKlpgNd5r6qSGeniJk1UhVz6uCgTBg9vtE7tsNq+OO0TSp9HkwjWVb/XbIHoAn/s9bPNea8+f1kPUbVPqzZG1RoVbOUez4u3thvV6PP4z+f6STD2HuzvA6mh7E87KkELmgQdfaWj6N+PlEg=
   on:
+    condition: "$FIREFOX_VERSION = latest"
     tags: true
     repo: test-editor/web-messaging-service
     node: "9"
