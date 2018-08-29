@@ -14,7 +14,16 @@ node_js:
 os:
   - linux
 cache: yarn
+
+env:
+  global: 
+    - # Environment variables for NPM version patch    
+    - secure: "ib0rsQTZZGqUAQMLqlwSdmokAYaE1yZtr8J29JovsL2Cl8ayyREh7eEpYwl5zl49olV/Y3p31hmOmQXC5BWE1xGPAqm5eGgqMybu8eth2AU/PV542TxRxQ92ObEnlbXWqVy+JwxF6ezxg6bxZu0ROcYXj6sAUKgAeG9m2IKghy06/PrKtiWp358K/k7BBMeFM1SmeqULIqJIsID80NoMMs5/QGAGb4P4N9V4SDhGl6/0NmRXItFr7Ut2vGheFZpNovGYsN2dwN2RdMhHIfjNeHkNjCqP8HtbF1TlvwbkSwY3Q9i/doD0uR+7rC/3R+A8K62pJz/jEg/W0af8ciS3NC49dI4TEMGa7NiG+zoLtNxDfg26dPA3UKpqnOG5mfhaRKAVuqI7YumrpLVlvacplV0y1nYemFd2125DQ0w1v5u/vCAMlS0Rru3pN7RgNUY5FOPFfp1ayOCJkS6biZhZ4piRfttg5hitQhdx+1WX33sDEfZFhBZafP9ImaJY4mmZOmaKfDug2yyMlJwdR5hNIGRCUo1xgW6t5nvrSNowIrRNtfpt2HYhd/NbxvWM6wRI9LAjy8IJfhtE5WfuycGFProhcGLzy5T/DPTZEGFF3x4Impjxz7IbTmwq2UJmyOrekclzA6aftLoo+lPmWw3C93yPtxL5w/vy2mxGDqEvEjc="
+    - secure: "C0WTnp+LuluSW8iw+rT6RSLndGpAtcgWIWowQUmciN7tZZOHP3tJzY/sunqsPaShJo+d6cBOfRi3M8M/eM8c8n+JCtoVcfEmBg5BVnuDzZYkoKg2OQh3HeUl34S/hv5gcSgM2oL+yACspZ/yHIYqCzLBLg0nkkay+Cc1yVFH/jDSNRVIbpy9JQYyCjcy6k/xltQhxlnXGR8ZeV/yrnntlOS36M7f5QaNGcG5DOuc9V6ZK9T+T7uBFjY/WUZaJh2k+Q83Rj+FAlrSKrazfGl+DgzbeUpRYcV0RBrzrSQPE7odu+28h3YqCEp+xZv+2g7GZeIWYby9bl+GUyadijJdgxPX+KsEOgXH+fX1GBwB5rUp62uFF3J6yxIdmCAAQU2bX3nNqr23f2blbiy0bP+Nj8z4DSQdBPzXe9MAMmTk+DUmKkO4DFb2eDUnrzj0AbSyb/Ry7GolftlcHy8BMG6F0fh8bNSr/tJlURMBBunIBiMjjjOD9XRj9ch4XyZFfalo2ryZJubhEtUk+uQ7dXsNesf/bsY5/ryqN/iQN+Gjum0qz3mIZcdMnrilVIcU/Luugw26ciKiI3yDfeH1MzYdQokaTZacW6pig+PxhNvWGTJmwH5erd2Z1gaQiaAcIHcxlhEWlJ/oaSUofnDRIe/tfnRavKo7agUKpDln+wa49/4=" 
+
 before_install:
+  # just for delpoyment
+  - export FIREFOX_VERSION="latest"
   # Use a virtual display.
   - "export DISPLAY=:99.0"
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1920x1080x16"
@@ -42,7 +51,7 @@ after_success:
 #     this is not a pull request and (pull requests themselves should not autoincrement)
 #     this branch is the master branch and (only builds on master are relevant)
 #     there is no tag given (if a tag is alread given, this one will be published and should not again be tagged!)
-- 'if [ "$FIREFOX_VERSION" = "latest" -a "$TRAVIS_PULL_REQUEST" = "false" -a "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_TAG" = "" ]; then wget https://github.com/test-editor/commons-build-automation/raw/master/travis/deploy/tag_with_new_patch_version.sh; bash tag_with_new_patch_version.sh; fi'
+  - 'if [ "$FIREFOX_VERSION" = "latest" -a "$TRAVIS_PULL_REQUEST" = "false" -a "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_TAG" = "" ]; then wget https://github.com/test-editor/commons-build-automation/raw/master/travis/deploy/tag_with_new_patch_version.sh; bash tag_with_new_patch_version.sh; fi'
 deploy:
   skip_cleanup: true # stay in working dir (dist/)
   provider: npm
