@@ -22,6 +22,8 @@ env:
     - secure: "C0WTnp+LuluSW8iw+rT6RSLndGpAtcgWIWowQUmciN7tZZOHP3tJzY/sunqsPaShJo+d6cBOfRi3M8M/eM8c8n+JCtoVcfEmBg5BVnuDzZYkoKg2OQh3HeUl34S/hv5gcSgM2oL+yACspZ/yHIYqCzLBLg0nkkay+Cc1yVFH/jDSNRVIbpy9JQYyCjcy6k/xltQhxlnXGR8ZeV/yrnntlOS36M7f5QaNGcG5DOuc9V6ZK9T+T7uBFjY/WUZaJh2k+Q83Rj+FAlrSKrazfGl+DgzbeUpRYcV0RBrzrSQPE7odu+28h3YqCEp+xZv+2g7GZeIWYby9bl+GUyadijJdgxPX+KsEOgXH+fX1GBwB5rUp62uFF3J6yxIdmCAAQU2bX3nNqr23f2blbiy0bP+Nj8z4DSQdBPzXe9MAMmTk+DUmKkO4DFb2eDUnrzj0AbSyb/Ry7GolftlcHy8BMG6F0fh8bNSr/tJlURMBBunIBiMjjjOD9XRj9ch4XyZFfalo2ryZJubhEtUk+uQ7dXsNesf/bsY5/ryqN/iQN+Gjum0qz3mIZcdMnrilVIcU/Luugw26ciKiI3yDfeH1MzYdQokaTZacW6pig+PxhNvWGTJmwH5erd2Z1gaQiaAcIHcxlhEWlJ/oaSUofnDRIe/tfnRavKo7agUKpDln+wa49/4=" 
 
 before_install:
+  # just for delpoyment
+  - export FIREFOX_VERSION="latest"
   # Use a virtual display.
   - "export DISPLAY=:99.0"
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1920x1080x16"
