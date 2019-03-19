@@ -26,7 +26,7 @@ script:
 - nix-shell shell-${FIREFOX_VERSION}.nix --command "google-chrome --version"
 - nix-shell shell-${FIREFOX_VERSION}.nix --command "yarn run lint"
 - nix-shell shell-${FIREFOX_VERSION}.nix --command "xvfb-run --server-args=\"-ac -screen 0 1920x1080x16\" yarn run test:once"
-- nix-shell shell-${FIREFOX_VERSION}.nix --command "xvfb-run --server-args=\"-ac -screen 0 1920x1080x16\" yarn run integration"
+- nix-shell shell-${FIREFOX_VERSION}.nix --command "xvfb-run --server-args=\"-ac -screen 0 1920x1080x16\" yarn run e2e"
 
 # deployment
 after_success:
