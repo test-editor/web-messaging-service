@@ -1,6 +1,6 @@
 {
   "name": "@testeditor/messaging-service",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "description": "Angular service for component communication.",
   "license": "MIT",
   "keywords": [
