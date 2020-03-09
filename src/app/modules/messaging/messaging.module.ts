@@ -10,7 +10,7 @@ import { MessagingService } from './messaging.service';
 })
 export class MessagingModule {
 
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<MessagingModule> {
     return {
       ngModule: MessagingModule,
       providers: [ MessagingService ]
