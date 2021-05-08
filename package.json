@@ -77,7 +77,7 @@
     "karma-jasmine-html-reporter": "1.0.0",
     "karma-remap-coverage": "0.1.5",
     "lite-server": "2.3.0",
-    "ng-packagr": "^2.4.2",
+    "ng-packagr": "^10.1.1",
     "protractor": "^5.4.2",
     "rimraf": "2.6.2",
     "rollup": "0.58.2",
